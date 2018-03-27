@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TEST Obj TagCloud</title>
+    <link rel="stylesheet" href="Obj.js/libs/jquery-ui-1.12.1/jquery-ui.min.css">
+    <script src="Obj.js/libs/jquery-3.2.1.min.js"></script>
+    <script src="Obj.js/libs/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="Obj.js/packages/ui/basic/Mot.js"></script>
+    <script src="Obj.js/packages/ui/basic/Px.js"></script>
+    <script src="Obj.js/packages/ui/basic/Obj.js"></script>
+    <script src="Obj.js/packages/ui/basic/Button.js"></script>
+    <script src="Obj.js/packages/ui/data/TagCloud.js"></script>
+    <script>
+        // alert(document.body.clientWidth || window.innerWidth)
+
+        // console.log('document.body.clientWidth', document.body.clientWidth)
+        // console.log('window.innerWidth', window.innerWidth)
+
+        var sdk = {
+            inArray: function(value, array) {
+                return array.indexOf(value) >= 0;
+            },
+            require: function(pkg) {
+                return false;
+            }
+        };
+
+        $(document).ready(function() {
+
+            tags = TagCloud({
+                tags: [
+                    'aaaaaaaaa',
+                    'bbbbbbbb',
+                    'cccccc',
+                    'dddddddd',
+                    'eeeeeee',
+                    'fffffff',
+                    'gggggggg',
+                    'hhhhhhhh',
+                    'iiiiiiiiii',
+                    'jjjjjjjjjj',
+                    'kkkkkkkk',
+                    'lllllll',
+                    'mmmmmmmm',
+                    'nnnnnn',
+                    'oooooooo',
+                    'ppppppppp',
+                    'qqqqqqqqq',
+                    'rrrrrr',
+                    'aaaaaaaaa',
+                    'bbbbbbbb',
+                    'cccccc',
+                    'dddddddd',
+                    'eeeeeee',
+                    'fffffff',
+                    'gggggggg',
+                    'hhhhhhhh',
+                    'iiiiiiiiii',
+                    'jjjjjjjjjj',
+                    'kkkkkkkk',             'rrrrrr',
+                ],
+                appendTo: 'body'
+            });
+            
+            tags.draggable()
+        });
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
