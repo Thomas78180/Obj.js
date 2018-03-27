@@ -132,10 +132,7 @@ var sdk = function() {
 		return d+separator+mo+separator+y;
 	};
 	var _inArray = function(val, array) {
-		for(var i = 0, j = array.length; i < j; i++) {
-			if(array[i] == val) return true;
-		}
-		return false;
+		return array.indexOf(value) >= 0;
 	};
 	var _print_r = function(theObj) {
 		if(!theObj) return 'null';
@@ -253,6 +250,9 @@ var sdk = function() {
 			}
 		});
 	};
+	var _loadLocalScript = function() {
+		
+	};
 	var _require = function(options) {
 		
 		/**
@@ -260,6 +260,10 @@ var sdk = function() {
 		* options.onSuccess: function()
 		* options.onError: optionnal function(package, err)
 		*/
+		
+		if(_appProtocol == 'file://') {
+			return alert('file protocol')
+		}
 		
 		if(typeof options === 'string') {
 			if(!_inArray(options, _loadedPackages)) {
