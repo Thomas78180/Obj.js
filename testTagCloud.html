@@ -28,49 +28,89 @@
             }
         };
 
-        $(document).ready(function() {
+        var _tags = [
+            'aaaaaaaaa',
+            'bbbbbbbb',
+            'cccccc',
+            'dddddddd',
+            'eeeeeee',
+            'fffffff',
+            'gggggggg',
+            'hhhhhhhh',
+            'iiiiiiiiii',
+            'jjjjjjjjjj',
+            'kkkkkkkk',
+            'lllllll',
+            'mmmmmmmm',
+            'nnnnnn',
+            'oooooooo',
+            'ppppppppp',
+            'qqqqqqqqq',
+            'rrrrrr',
+            'aaaaaaaaa',
+            'bbbbbbbb',
+            'cccccc',
+            'dddddddd',
+            'eeeeeee',
+            'fffffff',
+            'gggggggg',
+            'hhhhhhhh',
+            'iiiiiiiiii',
+            'jjjjjjjjjj',
+            'kkkkkkkk',
+            'rrrrrr'
+        ]
 
-            tags = TagCloud({
-                tags: [
-                    'aaaaaaaaa',
-                    'bbbbbbbb',
-                    'cccccc',
-                    'dddddddd',
-                    'eeeeeee',
-                    'fffffff',
-                    'gggggggg',
-                    'hhhhhhhh',
-                    'iiiiiiiiii',
-                    'jjjjjjjjjj',
-                    'kkkkkkkk',
-                    'lllllll',
-                    'mmmmmmmm',
-                    'nnnnnn',
-                    'oooooooo',
-                    'ppppppppp',
-                    'qqqqqqqqq',
-                    'rrrrrr',
-                    'aaaaaaaaa',
-                    'bbbbbbbb',
-                    'cccccc',
-                    'dddddddd',
-                    'eeeeeee',
-                    'fffffff',
-                    'gggggggg',
-                    'hhhhhhhh',
-                    'iiiiiiiiii',
-                    'jjjjjjjjjj',
-                    'kkkkkkkk',             'rrrrrr',
-                ],
+        tagCloud = null;
+        function test() {
+            
+            if(tagCloud) tagCloud.remove();
+
+            tagCloud = TagCloud({
+                tags: _tags,
+                radius: $('#radius').val(),
+                fontMultiplier: $('#fontMultiplier').val(),
+                mouseX: $('#mouseX').val(),
+                mouseY: $('#mouseY').val(),
+                forceRatioTop: $('#forceRatioTop').val(),
+                forceRatioLeft: $('#forceRatioLeft').val(),
+                css: {
+                    top: '100px',
+                    left: '100px',
+                },
                 appendTo: 'body'
             });
             
-            tags.draggable()
+            tagCloud.draggable()
+        }
+
+
+        $(document).ready(function() {
+
+            test()
         });
 
     </script>
 </head>
 <body>
-    
+    <div style="float: right;">
+        <label for="radius">radius</label>
+        <input id="radius" type="number" value="100" onkeyup="test()">
+        <br />
+        <label for="fontMultiplier">fontMultiplier</label>
+        <input id="fontMultiplier" type="number" value="30" onkeyup="test()">
+        <br />
+        <label for="mouseX">mouseX</label>
+        <input id="mouseX" type="number" value="417" onkeyup="test()">
+        <br />
+        <label for="mouseY">mouseY</label>
+        <input id="mouseY" type="number" value="106" onkeyup="test()">
+        <br />
+        <label for="forceRatioTop">forceRatioTop</label>
+        <input id="forceRatioTop" type="number" value="1" onkeyup="test()">
+        <br />
+        <label for="forceRatioLeft">forceRatioLeft</label>
+        <input id="forceRatioLeft" type="number" value="1" onkeyup="test()">
+    </div>
 </body>
 </html>

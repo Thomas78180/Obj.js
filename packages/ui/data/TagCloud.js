@@ -12,23 +12,19 @@ var TagCloud = function(options) {
 
     var defauts = {
         tags: [],
-        radius: 150,
+        radius: 100,
         speed: -0.5,
-        slower: 0.99,
-        // timer: 25,
         timer: 40,
-        // fontMultiplier: 15,
-        // fontMultiplier: 100,
-        fontMultiplier: 30,
+        fontMultiplier: 40,
+        forceRatioTop: 1,
+        forceRatioLeft: 1,
+        mouseX: 417,
+        mouseY: 106,
         css: {
             width: '400px',
             height: '300px',
-            // width: '800px',
-            // height: '600px',
             position: 'relative',
-            // overflow: 'hidden',
-            border: '1px solid black',
-            borderRadius: '50%'
+            border: '1px solid black'
         },
         onTagPress: function(tag, event) {}
     };
@@ -62,10 +58,8 @@ var TagCloud = function(options) {
     var _rx1 = null;
     var _ry1 = null;
     var _rz1 = null;
-    // var _mouseX = 778;
-    // var _mouseY = 158;
-    var _mouseX = 417;
-    var _mouseY = 106;
+    var _mouseX = param.mouseX;
+    var _mouseY = param.mouseY;
 
     var _calculRotation = function(fy, fx) {
 
@@ -91,29 +85,15 @@ var TagCloud = function(options) {
         tag.alpha = per / 2;
 
         tag.css({
-            // top: (_hwratio * (tag.y - tag.h * per) + _halfHeight) * 1.5,
-            // left: (_whratio * (tag.x - tag.w * per) + _halfWidth) * 2,
-            top: (_hwratio * (tag.y - tag.h * per) + _halfHeight) * 1,
-            left: (_whratio * (tag.x - tag.w * per) + _halfWidth) * 1,
+            top: (_hwratio * (tag.y - tag.h * per) + _halfHeight) * param.forceRatioTop,
+            left: (_whratio * (tag.x - tag.w * per) + _halfWidth) * param.forceRatioLeft,
             opacity: tag.alpha,
             fontSize: param.fontMultiplier * tag.alpha + 'px',
             zIndex: Math.round(-tag.cz)
         }).find('.Mot').css('fontSize', param.fontMultiplier * tag.alpha + 'px');
     };
 
-    $('body').on('click', function(e) {
-       
-        _mouseX = e.clientX;
-        _mouseY = e.clientY;
-
-        console.log({
-            x: _mouseX,
-            y: _mouseY
-        });
-    })
-
     var _animate = function() {
-
 
         _lastFy = param.speed - _speedY * _mouseY;
         _lastFx = _speedX * _mouseX - param.speed;
@@ -123,7 +103,6 @@ var TagCloud = function(options) {
             _calculRotation(_lastFy, _lastFx);
 
             _tags.forEach(function(tag) {
-                // console.log(_i)
                 _updateTag(tag);
             });
         }
@@ -136,14 +115,11 @@ var TagCloud = function(options) {
         _tags.push(Button({
             mot: {
                 html: label,
-                // css: {
-                //     width: '200px',
-                //     height: '25px;',
-                // }
+                css: {
+                    display: 'inline-block'
+                }
             },
             css: {
-                // width: '400px',
-                // height: '25px;',
                 border: '3px solid blue',
                 position: 'absolute',
                 backgroundColor: 'red',
@@ -177,7 +153,7 @@ var TagCloud = function(options) {
         tag.h = tag.height() / 4;
 
         // positionnement
-        // _updateTag(_tags[_i]);
+        // _updateTag(tag);
 
         var per = _diametr / (_diametr + tag.cz);
         
